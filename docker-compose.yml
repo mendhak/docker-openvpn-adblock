@@ -1,0 +1,39 @@
+version: '2'
+services:
+  openvpnudp:
+    cap_add:
+     - NET_ADMIN
+    image: kylemanna/openvpn
+    container_name: openvpn
+    ports:
+     - "1194:1194/udp"
+    restart: always
+    volumes:
+     - ./openvpn-data/conf:/etc/openvpn
+
+  openvpntcp:
+    privileged: true
+    image: kylemanna/openvpn
+    container_name: openvpntcp
+    ports:
+     - "563:1194/tcp"
+    restart: always
+    environment:
+     - DEBUG=1
+    command: ovpn_run --proto tcp
+    volumes:
+     - ./openvpn-data/conf:/etc/openvpn     
+    depends_on:
+     - dnsmasq
+
+  dnsmasq:
+    image: oznu/dns-ad-blocker
+    container_name: dnsmasq
+    volumes:
+     - ./dnsmasq-rules:/config
+    environment:
+     - DEBUG=0 
+     - NS1=8.8.8.8 
+     - NS2=8.8.4.4 
+     - AUTO_UPDATE=1 
+     - BRANCH=master
