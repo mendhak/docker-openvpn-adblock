@@ -22,6 +22,11 @@ Together, this setup allows for you to connect to this OpenVPN server, with buil
 When the script is run, follow the prompts and enter passwords where necessary. When asked for a Common Name, enter your server's DNS or IP address.
 
 
+### To generate another .ovpn
+
+    ./2.gen.sh `myfriend` 
+
+This will result in a `myfriend.ovpn`    
 
 ### To start over
 
