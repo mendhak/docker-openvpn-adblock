@@ -1,5 +1,5 @@
 if [ "$#" -ne 1 ]; then
-	echo "Usage: ./gen.sh username"
+	echo "Usage: ./gen.sh clientname"
 	exit 1
 fi
 docker-compose run --rm ovpngen easyrsa build-client-full $1 nopass

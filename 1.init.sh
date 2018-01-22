@@ -1,6 +1,6 @@
 
 if [ "$#" -ne 2 ]; then
-	echo "Usage: ./1.init.sh username server.example.com"
+	echo "Usage: ./1.init.sh clientname server.example.com"
 	exit 1
 fi
 
