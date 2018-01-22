@@ -11,3 +11,28 @@ Sets up OpenVPN to listen on both TCP (port 563) and UDP (port 1194).  Sets the 
 
 Together, this setup allows for you to connect to this OpenVPN server, with built-in adblocking. 
 
+### To run it
+
+    ./1.init.sh clientname server.example.com
+
+
+* clientname - the profile, such as `workpc` - this results in a `workpc.ovpn` for example.
+* server.example.com - the server where these containers will be hosted
+
+When the script is run, follow the prompts and enter passwords where necessary. When asked for a Common Name, enter your server's DNS or IP address.
+
+
+
+### To start over
+
+Remove the containers
+
+    sudo docker-compose stop
+    sudo docker-compose rm -f
+
+Remove generated files
+
+    rm -f openvpn-data/
+    rm *.ovpn
+
+    
