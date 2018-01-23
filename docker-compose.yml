@@ -8,6 +8,7 @@ services:
     ports:
      - "1194:1194/udp"
     restart: always
+    network_mode: bridge
     volumes:
      - ./openvpn-data/conf:/etc/openvpn
 
@@ -18,11 +19,14 @@ services:
     ports:
      - "563:1194/tcp"
     restart: always
+    network_mode: bridge
     environment:
      - DEBUG=1
     command: ovpn_run --proto tcp
     volumes:
      - ./openvpn-data/conf:/etc/openvpn     
+    links:
+     - dnsmasq
     depends_on:
      - dnsmasq
 
@@ -31,9 +35,11 @@ services:
     container_name: dnsmasq
     volumes:
      - ./dnsmasq-rules:/config
+    network_mode: bridge
     environment:
      - DEBUG=0 
      - NS1=8.8.8.8 
      - NS2=8.8.4.4 
      - AUTO_UPDATE=1 
      - BRANCH=master
+
