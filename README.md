@@ -13,7 +13,7 @@ Together, this setup allows for you to connect to this OpenVPN server, with buil
 
 ### To run it
 
-    ./1.init.sh clientname server.example.com
+    sudo ./1.init.sh clientname server.example.com
 
 
 * clientname - the profile, such as `workpc` - this results in a `workpc.ovpn` for example.
@@ -24,7 +24,7 @@ When the script is run, follow the prompts and enter passwords where necessary. 
 
 ### To generate another .ovpn
 
-    ./2.gen.sh `myfriend` 
+    sudo ./2.gen.sh `myfriend` 
 
 This will result in a `myfriend.ovpn`    
 
