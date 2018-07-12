@@ -24,7 +24,7 @@ When the script is run, follow the prompts and enter passwords where necessary. 
 
 ### To generate another .ovpn
 
-    sudo ./2.gen.sh `myfriend` 
+    sudo ./2.gen.sh myfriend
 
 This will result in a `myfriend.ovpn`    
 
